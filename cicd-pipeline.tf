@@ -19,7 +19,7 @@ resource "aws_codebuild_project" "tf-plan" {
  }
  source {
      type   = "CODEPIPELINE"
-     buildspec = file("buildspec/plan-buildspec.yml")
+     buildspec = file("plan-buildspec.yml")
  }
 }
 
@@ -44,7 +44,7 @@ resource "aws_codebuild_project" "tf-apply" {
  }
  source {
      type   = "CODEPIPELINE"
-     buildspec = file("buildspec/apply-buildspec.yml")
+     buildspec = file("apply-buildspec.yml")
  }
 }
 
@@ -69,7 +69,7 @@ resource "aws_codepipeline" "cicd_pipeline" {
             version = "1"
             output_artifacts = ["tf-code"]
             configuration = {
-                FullRepositoryId = "davoclock/aws-cicd-pipeline"
+                FullRepositoryId = "sharankumarp/Aws-cicd-pipeline"
                 BranchName   = "master"
                 ConnectionArn = var.codestar_connector_credentials
                 OutputArtifactFormat = "CODE_ZIP"
